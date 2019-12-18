@@ -1,6 +1,11 @@
 package br.com.maccommerce.paymentservice.entities;
 
+import br.com.maccommerce.paymentservice.dtos.CartaoCreditoDto;
+import br.com.maccommerce.paymentservice.util.DateFormat;
+
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -17,16 +22,22 @@ public class CartaoCredito implements Serializable {
 	private static final long serialVersionUID = 7405059448479979725L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "NUM_CART", nullable = false)
-	private String numeroCartao;
+	@Column(name = "numero", nullable = false)
+	private String numero;
 
-	@Column(name = "VENC_CART", nullable = false)
-	private Date vencimentoCartao;
+	@Column(name = "vencimento", nullable = false)
+	private Date vencimento;
 	
 	public CartaoCredito () { }
+
+	public CartaoCredito(CartaoCreditoDto dto) {
+		this.id = dto.getId();
+		this.numero = dto.getNumero();
+		this.vencimento = DateFormat.CREDIT_CARD_EXPIRATION_DATE.parse(dto.getVencimento());
+	}
 
 	public Long getId() {
 		return id;
@@ -36,25 +47,24 @@ public class CartaoCredito implements Serializable {
 		this.id = id;
 	}
 
-	public String getNumeroCartao() {
-		return numeroCartao;
+	public String getNumero() {
+		return numero;
 	}
 
-	public void setNumeroCartao(String numeroCartao) {
-		this.numeroCartao = numeroCartao;
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 
-	public Date getVencimentoCartao() {
-		return vencimentoCartao;
+	public Date getVencimento() {
+		return vencimento;
 	}
 
-	public void setVencimentoCartao(Date vencimentoCartao) {
-		this.vencimentoCartao = vencimentoCartao;
+	public void setVencimento(Date vencimento) {
+		this.vencimento = vencimento;
 	}
 
 	@Override public String toString() {
-		return "CartaoCredito [id=" + id + ", numeroCartao=" + numeroCartao + ", vencimentoCartao=" + vencimentoCartao
-				+ "]";
+		return "CartaoCredito [id=" + id + ", numero=" + numero + ", vencimento=" + vencimento + "]";
 	}
 
 }

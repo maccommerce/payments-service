@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CartaoCreditoRepository extends JpaRepository<CartaoCredito, Long>{
 	
-	CartaoCredito findByNumeroCartao(String numeroCartao);
+	CartaoCredito findByNumero(String numero);
 
 }

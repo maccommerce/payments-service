@@ -1,11 +1,21 @@
 package br.com.maccommerce.paymentservice.dtos;
 
+import br.com.maccommerce.paymentservice.entities.CartaoCredito;
+import br.com.maccommerce.paymentservice.util.DateFormat;
+
 public class CartaoCreditoDto {
 	
 	private Long id;
-	private String numeroCartao;
+	private String numero;
+	private String vencimento;
 
 	public CartaoCreditoDto() { }
+
+	public CartaoCreditoDto(CartaoCredito cartaoCredito) {
+		this.id = cartaoCredito.getId();
+		this.numero = cartaoCredito.getNumero();
+		this.vencimento = DateFormat.CREDIT_CARD_EXPIRATION_DATE.format(cartaoCredito.getVencimento());
+	}
 
 	public Long getId() {
 		return id;
@@ -15,16 +25,23 @@ public class CartaoCreditoDto {
 		this.id = id;
 	}
 
-	public String getNumeroCartao() {
-		return numeroCartao;
+	public String getNumero() {
+		return numero;
 	}
 
-	public void setNumeroCartao(String numeroCartao) {
-		this.numeroCartao = numeroCartao;
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public String getVencimento() {
+		return vencimento;
+	}
+
+	public void setVencimento(String vencimento) {
+		this.vencimento = vencimento;
 	}
 
 	@Override public String toString() {
-		return "CartaoCreditoDto [id=" + id + ", numeroCartao=" + numeroCartao + "]";
+		return "CartaoCreditoDto{" + "id=" + id + ", numero='" + numero + '\'' + ", vencimento='" + vencimento + '\'' + '}';
 	}
-
 }

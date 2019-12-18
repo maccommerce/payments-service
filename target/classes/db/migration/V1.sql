@@ -1,6 +1,5 @@
-CREATE TABLE `cartao_credito` 
-(`ID` int(5) NOT NULL,
-  `NUM_CART` varchar(16) NOT NULL,
-  `VENC_CART` date NOT NULL
-) 
-ENGINE=InnoDB DEFAULT CHARSET=utf8
+CREATE TABLE cartao_credito (
+    id BIGSERIAL PRIMARY KEY NOT NULL,
+    numero VARCHAR(16) UNIQUE NOT NULL,
+    vencimento DATE NOT NULL
+);
