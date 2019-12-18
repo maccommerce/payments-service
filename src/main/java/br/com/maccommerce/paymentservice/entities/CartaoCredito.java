@@ -1,4 +1,4 @@
-package br.com.maccommerce.paymentsservice.entities;
+package br.com.maccommerce.paymentservice.entities;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -15,16 +15,19 @@ import javax.persistence.Table;
 public class CartaoCredito implements Serializable {
 
 	private static final long serialVersionUID = 7405059448479979725L;
-	
-	private Long id;
-	private String numeroCartao;
-	private Date vencimentoCartao;
-	
-	public CartaoCredito () {
-	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+
+	@Column(name = "NUM_CART", nullable = false)
+	private String numeroCartao;
+
+	@Column(name = "VENC_CART", nullable = false)
+	private Date vencimentoCartao;
+	
+	public CartaoCredito () { }
+
 	public Long getId() {
 		return id;
 	}
@@ -33,7 +36,6 @@ public class CartaoCredito implements Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "NUM_CART", nullable = false)
 	public String getNumeroCartao() {
 		return numeroCartao;
 	}
@@ -41,8 +43,7 @@ public class CartaoCredito implements Serializable {
 	public void setNumeroCartao(String numeroCartao) {
 		this.numeroCartao = numeroCartao;
 	}
-	
-	@Column(name = "VENC_CART", nullable = false)
+
 	public Date getVencimentoCartao() {
 		return vencimentoCartao;
 	}
@@ -51,9 +52,9 @@ public class CartaoCredito implements Serializable {
 		this.vencimentoCartao = vencimentoCartao;
 	}
 
-	@Override
-	public String toString() {
+	@Override public String toString() {
 		return "CartaoCredito [id=" + id + ", numeroCartao=" + numeroCartao + ", vencimentoCartao=" + vencimentoCartao
 				+ "]";
 	}
+
 }

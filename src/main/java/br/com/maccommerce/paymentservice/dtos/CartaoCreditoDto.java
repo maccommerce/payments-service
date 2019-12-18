@@ -1,12 +1,11 @@
-package br.com.maccommerce.paymentsservice.dtos;
+package br.com.maccommerce.paymentservice.dtos;
 
 public class CartaoCreditoDto {
 	
 	private Long id;
 	private String numeroCartao;
 
-	public CartaoCreditoDto() {
-	}
+	public CartaoCreditoDto() { }
 
 	public Long getId() {
 		return id;
@@ -24,8 +23,7 @@ public class CartaoCreditoDto {
 		this.numeroCartao = numeroCartao;
 	}
 
-	@Override
-	public String toString() {
+	@Override public String toString() {
 		return "CartaoCreditoDto [id=" + id + ", numeroCartao=" + numeroCartao + "]";
 	}
 

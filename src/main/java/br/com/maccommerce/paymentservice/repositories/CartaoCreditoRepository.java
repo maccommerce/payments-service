@@ -1,9 +1,9 @@
-package br.com.maccommerce.paymentsservice.repositories;
+package br.com.maccommerce.paymentservice.repositories;
+
+import br.com.maccommerce.paymentservice.entities.CartaoCredito;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.transaction.Transactional;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import br.com.maccommerce.paymentsservice.entities.CartaoCredito;
 
 public interface CartaoCreditoRepository extends JpaRepository<CartaoCredito, Long>{
 	
